@@ -1,0 +1,52 @@
+--------------------------------------------------------------
+Admin User List, Create, Update And Delete-
+* http://127.0.0.1:8000/admin-user/user-list/
+--------------------------------------------------------------
+
+
+--------------------------------------------------------------
+Login URL-
+* http://127.0.0.1:8000/admin-user/login/your-private-token/
+JSON:
+{
+    "username": "username",
+    "password": "password"
+}
+
+Verify Login- JSON
+{
+    "email": "username",
+    "otp": "password"
+}
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Admin Forget Password-
+* http://127.0.0.1:8000/admin-user/forget-password/
+JSON:
+{
+    "email": "email",
+}
+
+Admin Reset Password-
+* http://127.0.0.1:8000/admin-user/reset-password/
+{
+    "email": "email",
+    "otp": "otp",
+    "password1": "password1",
+    "password2": "password2"
+}
+--------------------------------------------------------------
+
+
+--------------------------------------------------------------
+Admin Change Password-
+* http://127.0.0.1:8000/admin-user/change-password/
+JSON:
+{
+    "old_password": "old_password",
+    "new_password1": "new_password1",
+    "new_password2": "new_password2",
+}
+--------------------------------------------------------------
+

@@ -1,0 +1,11 @@
+IT----
+Order API Endpoint - http://127.0.0.1:8000/api/it/order/
+Payment Method API Endpoint - http://127.0.0.1:8000/api/it/payment-method/
+Payment API Endpoint - http://127.0.0.1:8000/api/it/payment/
+Refund API Endpoint - http://127.0.0.1:8000/api/it/refund/
+
+Civil----
+Order API Endpoint - http://127.0.0.1:8000/api/civil/order/
+Payment Method API Endpoint - http://127.0.0.1:8000/api/civil/payment-method/
+Payment API Endpoint - http://127.0.0.1:8000/api/civil/payment/
+Refund API Endpoint - http://127.0.0.1:8000/api/civil/refund/

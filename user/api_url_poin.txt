@@ -1,0 +1,45 @@
+--------------------------------------------------------------
+Change Password API URL Link: http://127.0.0.1:8000/user/user/change-password/
+JSON:
+{
+  "old_password": "admin",
+  "new_password1": "Admin@2024",
+  "new_password2": "Admin@2024"
+}
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Login API URL Link: http://127.0.0.1:8000/user/login/
+JSON:
+{
+    "username": "username",
+    "password": "password"
+}
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+Forget Password API URL Link: http://127.0.0.1:8000/user/forget-password/
+JSON:
+{
+    "email": "samim.o.sabuj01@gmail.com",
+    "username": "username"
+}
+Reset Password API URL Link: http://127.0.0.1:8000/user/reset-password/
+JSON:
+{
+    "email": "username",
+    "otp": "username",
+    "password1": "password",
+    "password2": "password"
+}
+--------------------------------------------------------------
+
+--------------------------------------------------------------
+New Account Verification URL Link: http://127.0.0.1:8000/user/user-verification/
+JSON:
+{
+    "otp": "otp"
+}
+--------------------------------------------------------------
+
+
