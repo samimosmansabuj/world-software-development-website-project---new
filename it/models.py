@@ -45,7 +45,7 @@ class IT_Order(models.Model):
     total_amount_paid = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     total_amount_remain = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     profit_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    
+    is_only_me=models.BooleanField(default=False)
     delivery_date = models.DateField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_update_at = models.DateTimeField(auto_now=True)

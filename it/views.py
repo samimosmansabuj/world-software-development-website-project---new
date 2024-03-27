@@ -9,11 +9,28 @@ from rest_framework.parsers import MultiPartParser
 # ==================================================
 # IT Order Views Section Start
 # ==================================================
+from admin_user.models import Admin_User
 class IT_OrderAPI(viewsets.ModelViewSet):
-    queryset = IT_Order.objects.all()
     serializer_class = IT_OrderSerializer
     permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser]
+    def get_queryset(self):
+        user = self.request.user
+        queryset = IT_Order.objects.filter(is_only_me=True)
+        if user.is_authenticated and queryset:
+            if user.user_type == 'Admin':
+                queryset = IT_Order.objects.all()
+            elif user.user_type == 'Sub-Admin':
+                queryset = IT_Order.objects.none() 
+            else:
+                queryset = IT_Order.objects.all()
+        else:
+            queryset = IT_Order.objects.all()
+
+        return queryset
+
+        
+
     
     # # def initial(self, request, *args, **kwargs):
     # #     request.data['user'] = request.user.id
