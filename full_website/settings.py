@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     
     # custom
+    'home_page',
     'it_dashboard', 'it',
     'civil_dashboard', 'civil',
     'account', 
