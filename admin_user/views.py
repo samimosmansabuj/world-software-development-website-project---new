@@ -77,6 +77,7 @@ class AdminLogin(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             
 class AdminLoginOTPVerification(APIView):
+    serializer_class = AdminOTPVerificationSerializer
     def post(self, request, *args, **kwargs):
         serializer = AdminOTPVerificationSerializer(data=request.data)
         if serializer.is_valid():

@@ -21,7 +21,7 @@ urlpatterns = [
     path('change-password/', AdminChangePasswordAPIView.as_view(), name='admin-change-password-api'),
     
     # Delete requests
-     path('delete-requests/', ListDeleteRequestUsers.as_view(), name='list-delete-request-users'),
+    path('delete-requests/', ListDeleteRequestUsers.as_view(), name='list-delete-request-users'),
     
     # approve delete requests
     path('approve-profile-delete-request/<int:pk>', ApproveUserProfileDeleteRequestAPIView.as_view(), name='approve-profile-delete-request'),

@@ -6,3 +6,4 @@ from . import consumers
 websocket_urlpatterns = [
     path(r'ws/civil/', consumers.Consumer.as_asgi()),
 ]
+

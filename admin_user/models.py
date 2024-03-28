@@ -25,6 +25,8 @@ class Admin_User(Custom_User):
         if self.user_type == 'Admin':
             self.is_staff = True
             self.is_superuser = True
+            self.is_ti = True
+            self.is_civil = True
         elif self.user_type == 'Sub-Admin':
             self.is_staff = False
             self.is_superuser = False
@@ -78,3 +80,5 @@ class Admin_OTP(models.Model):
             self.save()
             return True
         return False
+
+

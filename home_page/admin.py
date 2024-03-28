@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from .sound_models import *
 
 # Register your models here.
 admin.site.register(Logo)
@@ -33,3 +34,10 @@ admin.site.register(FooterSectionTopics)
 admin.site.register(FooterSection1)
 admin.site.register(FooterSection2)
 admin.site.register(FooterSection3)
+
+
+admin.site.register(Civil_Live_Chat_Admin_Sound)
+admin.site.register(Civil_User_Sound)
+admin.site.register(Civil_User_Order_Sound)
+
+

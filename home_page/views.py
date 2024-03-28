@@ -5,7 +5,12 @@ from rest_framework.permissions import AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 import django_filters
 from .models import *
+from .application_form_models import OrderApplicationForm
+from rest_framework.permissions import IsAuthenticated
 from .serializers import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 
 class LogoViewSet(viewsets.ModelViewSet):
@@ -408,4 +413,24 @@ class FooterSection3ViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['section']
 
+
+
+class OrderApplicationViews(APIView):
+    serializer_class = OrderApplicationFormSerializer
+    parser_classes = [MultiPartParser]
+    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = OrderApplicationFormSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
+    def get(self, request, *args, **kwargs):
+        form = OrderApplicationForm.objects.filter(user=request.user)
+        serializer = OrderApplicationFormSerializer(form, many=True)
+        return Response(serializer.data)
 

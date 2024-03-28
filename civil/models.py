@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from .payment_method_models import *
+from home_page.application_form_models import OrderApplicationForm
 
 
 # ==================================================
@@ -36,7 +37,7 @@ class Civil_Order(models.Model):
     project_name = models.CharField(max_length=300)
     project_file = models.FileField(upload_to='civil/order/project-file/', blank=True, null=True)
     related_file = models.FileField(upload_to='civil/order/related-file/', blank=True, null=True)
-    user_information_form  = models.FileField(upload_to='civil/order/user-information-form/', blank=True, null=True)
+    application_form = models.ForeignKey(OrderApplicationForm, on_delete=models.CASCADE, related_name='civil_order_application_form')
     
     status = models.CharField(max_length=40, choices=STATUS, default='Pending')
     piority = models.CharField(max_length=40, choices=PIORITY, default='Normal')

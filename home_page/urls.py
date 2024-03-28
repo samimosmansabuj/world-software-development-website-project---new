@@ -1,9 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import *
+from .sound_views import *
 
 router = DefaultRouter()
-
 router.register(r'logo', LogoViewSet, basename='logo')
 router.register(r'banners', BannerViewSet)
 router.register(r'two-card-customer-feedback', TwoCardCustomerFeedbackViewSet)
@@ -36,6 +36,23 @@ router.register(r'footer-section-1', FooterSection1ViewSet)
 router.register(r'footer-section-2', FooterSection2ViewSet)
 router.register(r'footer-section-3', FooterSection3ViewSet)
 
+
+# ==================================================
+# Sound Urls Router For Whole Website Start
+# ==================================================
+sound_router = DefaultRouter()
+sound_router.register(r'live-chat-admin-sound', CivilLiveChatAdminSoundAPI, basename='civil-live-chat-admin-sound')
+sound_router.register(r'user-sound', CivilUserSoundAPI, basename='civil-user-sound')
+sound_router.register(r'user-order-sound', CivilUserOrderSoundAPI, basename='civil-user-order-sound')
+# ==================================================
+# Sound Urls Router For Whole Website End
+# ==================================================
+
+
 urlpatterns = [
     path('', include(router.urls)),
+    path('sound/', include(sound_router.urls)),
+    
+    path('order/application/', OrderApplicationViews.as_view(), name='order_application')
 ]
+

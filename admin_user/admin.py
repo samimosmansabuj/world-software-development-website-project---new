@@ -9,3 +9,4 @@ class Custom_User_Admin(admin.ModelAdmin):
 
 
 admin.site.register(Admin_User_Authentication_Model)
+admin.site.register(Admin_OTP)

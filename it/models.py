@@ -2,6 +2,7 @@ from django.db import models
 from account.models import Custom_User
 from django.utils import timezone
 from .payment_method_models import *
+from home_page.application_form_models import OrderApplicationForm
 
 
 # ==================================================
@@ -34,6 +35,7 @@ class IT_Order(models.Model):
     project_name = models.CharField(max_length=300)
     project_file = models.FileField(upload_to='it/order/project-file/', blank=True, null=True)
     related_file = models.FileField(upload_to='it/order/related-file/', blank=True, null=True)
+    application_form = models.ForeignKey(OrderApplicationForm, on_delete=models.CASCADE, related_name='it_order_application_form')
     
     status = models.CharField(max_length=40, choices=STATUS, default='Pending')
     piority = models.CharField(max_length=40, choices=PIORITY, default='Normal')

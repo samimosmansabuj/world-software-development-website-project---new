@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from .application_form_models import OrderApplicationForm
 
 class LogoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -236,3 +237,25 @@ class FooterSection3Serializer(serializers.ModelSerializer):
     def get_all_topics(self, obj):
         topic = obj.topics.all()
         return FooterSectionTopicsSerializer(topic, many=True).data
+
+
+
+
+
+class OrderApplicationFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderApplicationForm
+        exclude = ['user']
+    
+    def create(self, validated_data):
+        user = self.context['request'].user
+        order_application_form = OrderApplicationForm.objects.create(user=user, **validated_data)
+        return order_application_form
+
+
+
+
+
+
+
+

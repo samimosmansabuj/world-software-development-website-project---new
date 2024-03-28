@@ -15,8 +15,6 @@ class AdminUserCreationSerializer(serializers.ModelSerializer):
         choices=[('Admin', 'Admin'), ('Sub-Admin', 'Sub-Admin')],
         validators=[MinLengthValidator(1, "User Type cannot be blank")]
     )
-    is_civil = serializers.CharField()
-    is_ti = serializers.CharField()
 
     password1 = serializers.CharField(write_only=True, required=False, style={'input_type': 'password'})
     password2 = serializers.CharField(write_only=True, required=False, style={'input_type': 'password'})
@@ -136,7 +134,7 @@ class AdminOTPVerificationSerializer(serializers.Serializer):
             raise serializers.ValidationError({'otp': 'Invalid or expired OTP.'})
 
         return data       
-  
+
 # ==========User Login Serializer End==========
 
 
