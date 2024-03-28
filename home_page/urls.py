@@ -50,7 +50,7 @@ sound_router.register(r'user-order-sound', CivilUserOrderSoundAPI, basename='civ
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('home/', include(router.urls)),
     path('sound/', include(sound_router.urls)),
     
     path('order/application/', OrderApplicationViews.as_view(), name='order_application')
