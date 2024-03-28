@@ -9,7 +9,7 @@ urlpatterns = [
     path('user-list/<int:pk>/', AdminUserUpdateDeleteAPI.as_view(), name='user'),
     
     # User Login Api Url====================================
-    path('login/', AdminLogin.as_view(), name='api-admin-login'),
+    # path('login/', AdminLogin.as_view(), name='api-admin-login'),
     path('login/<token>/', AdminLogin.as_view(), name='api-login-token'),
     path('login-verification/', AdminLoginOTPVerification.as_view(), name='admin-login-otp-verification'),
     
@@ -24,5 +24,5 @@ urlpatterns = [
     path('delete-requests/', ListDeleteRequestUsers.as_view(), name='list-delete-request-users'),
     
     # approve delete requests
-    path('approve-profile-delete-request/<int:pk>', ApproveUserProfileDeleteRequestAPIView.as_view(), name='approve-profile-delete-request'),
+    path('approve-profile-delete-request/<int:pk>/', ApproveUserProfileDeleteRequestAPIView.as_view(), name='approve-profile-delete-request'),
 ]
