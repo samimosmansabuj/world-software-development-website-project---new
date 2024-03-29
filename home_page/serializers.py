@@ -104,6 +104,8 @@ class TechnologySerializer(serializers.ModelSerializer):
         return TechnologyIconSerializer(icons, many=True).data
 
 
+
+# ===========================Only For Civil Start=================================
 class Civil_Arcitecture_ImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Civil_Arcitecture_Images
@@ -112,12 +114,15 @@ class Civil_Arcitecture_ImagesSerializer(serializers.ModelSerializer):
 
 
 class Civil_ArcitectureSerializer(serializers.ModelSerializer):
-    feature_image = Civil_Arcitecture_ImagesSerializer(many=True)
-
+    feature_images = serializers.SerializerMethodField()
     class Meta:
         model = Civil_Arcitecture
         fields = '__all__'
         read_only_fields = ('created_at', 'last_update_at')
+    
+    def get_feature_images(self, obj):
+        images = obj.feature_image.all()
+        return Civil_Arcitecture_ImagesSerializer(images, many=True).data
 
 
 class Civil_Feature_Work_CategorySerializer(serializers.ModelSerializer):
@@ -132,6 +137,9 @@ class Civil_Feature_WorkSerializer(serializers.ModelSerializer):
         model = Civil_Feature_Work
         fields = '__all__'
         read_only_fields = ('created_at', 'last_update_at')
+# ===========================Only For Civil Start=================================
+
+
 
 
 class OurServicesSerializer(serializers.ModelSerializer):
