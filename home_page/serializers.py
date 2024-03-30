@@ -100,8 +100,12 @@ class TechnologySerializer(serializers.ModelSerializer):
         read_only_fields = ('created_at', 'last_update_at')
     
     def get_technology_icon(self, obj):
+        request = self.context.get('request')
         icons = obj.technology_icons.all()
-        return TechnologyIconSerializer(icons, many=True).data
+        icons_data = TechnologyIconSerializer(icons, many=True, context={'request': request}).data
+        for icon_data in icons_data:
+            icon_data['icon'] = request.build_absolute_uri(icon_data['icon'])
+        return icons_data
 
 
 
@@ -109,10 +113,10 @@ class TechnologySerializer(serializers.ModelSerializer):
 class Civil_Arcitecture_ImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Civil_Arcitecture_Images
-        fields = '__all__'
+        fields = ('id', 'image')
         read_only_fields = ('created_at', 'last_update_at')
 
-
+from django.conf import settings
 class Civil_ArcitectureSerializer(serializers.ModelSerializer):
     feature_images = serializers.SerializerMethodField()
     class Meta:
@@ -120,9 +124,18 @@ class Civil_ArcitectureSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ('created_at', 'last_update_at')
     
+    
     def get_feature_images(self, obj):
+        request = self.context.get('request')
         images = obj.feature_image.all()
-        return Civil_Arcitecture_ImagesSerializer(images, many=True).data
+        images_data = Civil_Arcitecture_ImagesSerializer(images, many=True, context={'request': request}).data
+        for image_data in images_data:
+            image_data['image'] = request.build_absolute_uri(image_data['image'])
+        return images_data
+    
+    # def get_feature_images(self, obj):
+    #     images = obj.feature_image.all()
+    #     return Civil_Arcitecture_ImagesSerializer(images, many=True).data
 
 
 class Civil_Feature_Work_CategorySerializer(serializers.ModelSerializer):
